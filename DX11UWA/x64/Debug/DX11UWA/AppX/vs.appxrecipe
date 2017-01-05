@@ -22,17 +22,17 @@
     <AppXManifest Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-03T21:37:57.235</Modified>
+      <Modified>2017-01-05T22:37:33.171</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-01-03T21:37:56.697</Modified>
+      <Modified>2017-01-05T22:37:32.599</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
-      <Modified>2017-01-03T21:37:56.608</Modified>
+      <Modified>2017-01-05T22:37:32.508</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -68,17 +68,21 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T22:20:42.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
+      <PackagePath>InstancedVertexShader.cso</PackagePath>
+      <Modified>2017-01-05T22:37:26.936</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>
-      <Modified>2017-01-03T21:37:51.251</Modified>
+      <Modified>2017-01-05T22:37:27.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SampleVertexShader.cso">
       <PackagePath>SampleVertexShader.cso</PackagePath>
-      <Modified>2017-01-03T21:37:51.329</Modified>
+      <Modified>2017-01-05T22:37:27.101</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-01-03T21:37:57.104</Modified>
+      <Modified>2017-01-05T22:37:33.051</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

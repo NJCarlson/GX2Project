@@ -1,9 +1,12 @@
-﻿  compilation object save succeeded; see D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'd:\fullsail\current\graphics ii\gx2project\dx11uwa\dx11uwa\x64\debug\pch.pch' because it is being used by another process.
+  compilation object save succeeded; see D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso
+  compilation object save succeeded; see D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso
   compilation object save succeeded; see D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SampleVertexShader.cso
   pch.cpp
   App.cpp
   DDSTextureLoader.cpp
   DeviceResources.cpp
+  ModelLoader.cpp
   DX11UWAMain.cpp
   SampleFpsTextRenderer.cpp
   Sample3DSceneRenderer.cpp

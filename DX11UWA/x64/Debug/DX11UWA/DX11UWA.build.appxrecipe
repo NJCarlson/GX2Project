@@ -51,6 +51,9 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
+      <PackagePath>InstancedVertexShader.cso</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>
     </AppxPackagedFile>

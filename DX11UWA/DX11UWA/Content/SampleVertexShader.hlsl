@@ -21,6 +21,7 @@ struct PixelShaderInput
 };
 
 // Simple shader to do vertex processing on the GPU.
+//SV_InstancedID
 PixelShaderInput main(VertexShaderInput input)
 {
 	PixelShaderInput output;
