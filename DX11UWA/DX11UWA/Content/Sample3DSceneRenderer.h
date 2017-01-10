@@ -3,6 +3,7 @@
 #include "..\Common\DeviceResources.h"
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
+#include "Common\DDSTextureLoader.h"
 
 
 namespace DX11UWA
@@ -11,6 +12,9 @@ namespace DX11UWA
 	class Sample3DSceneRenderer
 	{
 	public:
+	
+		
+
 		Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 		void CreateDeviceDependentResources(void);
 		void CreateWindowSizeDependentResources(void);
@@ -51,6 +55,18 @@ namespace DX11UWA
 
 		uint32	p_indexCount;
 		uint32  Instanceindexcount;
+
+		//Model Loading
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		load_vertexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		load_indexBuffer;
+		uint32 load_indexCount;
+		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_loadedInputLayout;
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	loadedvertexShader;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_loadedpixelShader;
+		ModelViewProjectionConstantBuffer	m_loadedBufferData;
+
+		//Texture Variables
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> Alientree_srv;
 
 		// System resources for cube geometry.
 		ModelViewProjectionConstantBuffer	m_constantBufferData;

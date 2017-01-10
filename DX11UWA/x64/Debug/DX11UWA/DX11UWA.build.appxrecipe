@@ -24,6 +24,9 @@
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\AlienTree.dds">
+      <PackagePath>Assets\AlienTree.dds</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
@@ -51,8 +54,20 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\test pyramid.obj">
+      <PackagePath>Assets\test pyramid.obj</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\Alientree.obj">
+      <PackagePath>Assets\Alientree.obj</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LoadedPixelShader.cso">
+      <PackagePath>LoadedPixelShader.cso</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LoadedVertexShader.cso">
+      <PackagePath>LoadedVertexShader.cso</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>

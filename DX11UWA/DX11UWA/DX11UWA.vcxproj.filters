@@ -110,6 +110,9 @@
     <Image Include="Assets\StoreLogo.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\AlienTree.dds">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -127,5 +130,19 @@
     <FxCompile Include="Content\InstancedVertexShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
+    <FxCompile Include="Content\LoadedVertexShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\LoadedPixelShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Assets\test pyramid.obj">
+      <Filter>Assets</Filter>
+    </Object>
+    <Object Include="Assets\Alientree.obj">
+      <Filter>Assets</Filter>
+    </Object>
   </ItemGroup>
 </Project>
