@@ -22,21 +22,25 @@
     <AppXManifest Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-10T23:46:38.857</Modified>
+      <Modified>2017-01-12T20:36:36.922</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-01-10T23:51:24.443</Modified>
+      <Modified>2017-01-12T20:56:41.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
-      <Modified>2017-01-10T20:41:38.786</Modified>
+      <Modified>2017-01-12T20:36:36.431</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\AlienTree.dds">
       <PackagePath>Assets\AlienTree.dds</PackagePath>
       <Modified>2017-01-10T23:43:12.439</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\CastleSkybox.dds">
+      <PackagePath>Assets\CastleSkybox.dds</PackagePath>
+      <Modified>2017-01-12T18:39:56.595</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -72,37 +76,45 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T22:20:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\test pyramid.obj">
-      <PackagePath>Assets\test pyramid.obj</PackagePath>
-      <Modified>2017-01-05T23:39:28.210</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\Alientree.obj">
       <PackagePath>Assets\Alientree.obj</PackagePath>
       <Modified>2017-01-10T22:47:35.712</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\SkyboxCube.obj">
+      <PackagePath>Assets\SkyboxCube.obj</PackagePath>
+      <Modified>2017-01-12T20:35:28.485</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
-      <Modified>2017-01-10T20:41:12.878</Modified>
+      <Modified>2017-01-12T20:36:30.638</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LoadedPixelShader.cso">
       <PackagePath>LoadedPixelShader.cso</PackagePath>
-      <Modified>2017-01-10T23:52:02.339</Modified>
+      <Modified>2017-01-12T20:36:30.744</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LoadedVertexShader.cso">
       <PackagePath>LoadedVertexShader.cso</PackagePath>
-      <Modified>2017-01-10T21:15:33.712</Modified>
+      <Modified>2017-01-12T20:36:30.814</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>
-      <Modified>2017-01-10T20:41:12.972</Modified>
+      <Modified>2017-01-12T20:36:30.878</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SampleVertexShader.cso">
       <PackagePath>SampleVertexShader.cso</PackagePath>
-      <Modified>2017-01-10T20:41:13.038</Modified>
+      <Modified>2017-01-12T20:36:30.948</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SkyBoxPixelShader.cso">
+      <PackagePath>SkyBoxPixelShader.cso</PackagePath>
+      <Modified>2017-01-12T20:36:31.016</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SkyBoxVertexShader.cso">
+      <PackagePath>SkyBoxVertexShader.cso</PackagePath>
+      <Modified>2017-01-12T20:36:31.094</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-01-10T23:46:38.739</Modified>
+      <Modified>2017-01-12T20:36:36.887</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

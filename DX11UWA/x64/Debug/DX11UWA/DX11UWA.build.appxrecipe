@@ -27,6 +27,9 @@
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\AlienTree.dds">
       <PackagePath>Assets\AlienTree.dds</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\CastleSkybox.dds">
+      <PackagePath>Assets\CastleSkybox.dds</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
@@ -54,11 +57,11 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\test pyramid.obj">
-      <PackagePath>Assets\test pyramid.obj</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\Alientree.obj">
       <PackagePath>Assets\Alientree.obj</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\SkyboxCube.obj">
+      <PackagePath>Assets\SkyboxCube.obj</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
@@ -74,6 +77,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SampleVertexShader.cso">
       <PackagePath>SampleVertexShader.cso</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SkyBoxPixelShader.cso">
+      <PackagePath>SkyBoxPixelShader.cso</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\SkyBoxVertexShader.cso">
+      <PackagePath>SkyBoxVertexShader.cso</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\resources.pri">
       <PackagePath>resources.pri</PackagePath>

@@ -1,15 +1,18 @@
 Assets\AlienTree.dds
 Assets\Alientree.obj
+Assets\CastleSkybox.dds
 Assets\LockScreenLogo.scale-200.png
+Assets\SkyboxCube.obj
 Assets\SplashScreen.scale-200.png
 Assets\Square150x150Logo.scale-200.png
 Assets\Square44x44Logo.scale-200.png
 Assets\Square44x44Logo.targetsize-24_altform-unplated.png
 Assets\StoreLogo.png
-Assets\test pyramid.obj
 Assets\Wide310x150Logo.scale-200.png
 InstancedVertexShader.cso
 LoadedPixelShader.cso
 LoadedVertexShader.cso
 SamplePixelShader.cso
 SampleVertexShader.cso
+SkyBoxPixelShader.cso
+SkyBoxVertexShader.cso

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-CJM599L</Machine>
+    <WindowsUser>Nicholas.Carlson</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>54014835-9bba-472b-bf12-b7d15c2fdce2</PackageIdentityName>
+    <IntermediateOutputPath>D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\x64\Release\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>7D1FA365F4BFAD795A758483D707D8385B8CA96BAC9DCE6BE8D66334134E7944</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>54014835-9bba-472b-bf12-b7d15c2fdce2_1.0.0.0_x64__m2mhzkw71ghyc</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>54014835-9bba-472b-bf12-b7d15c2fdce2_m2mhzkw71ghyc!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>54014835-9bba-472b-bf12-b7d15c2fdce2</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Dan</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-01-12T20:58:06.973</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\AlienTree.dds">
+      <PackagePath>Assets\AlienTree.dds</PackagePath>
+      <Modified>2017-01-10T23:43:12.439</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\Alientree.obj">
+      <PackagePath>Assets\Alientree.obj</PackagePath>
+      <Modified>2017-01-10T22:47:35.712</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\CastleSkybox.dds">
+      <PackagePath>Assets\CastleSkybox.dds</PackagePath>
+      <Modified>2017-01-12T18:39:56.595</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\SkyboxCube.obj">
+      <PackagePath>Assets\SkyboxCube.obj</PackagePath>
+      <Modified>2017-01-12T20:35:28.485</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T22:20:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\DX11UWA.exe">
+      <PackagePath>DX11UWA.exe</PackagePath>
+      <Modified>2017-01-12T22:05:20.251</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\DX11UWA.winmd">
+      <PackagePath>DX11UWA.winmd</PackagePath>
+      <Modified>2017-01-12T20:58:06.417</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\InstancedVertexShader.cso">
+      <PackagePath>InstancedVertexShader.cso</PackagePath>
+      <Modified>2017-01-12T20:57:57.958</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\LoadedPixelShader.cso">
+      <PackagePath>LoadedPixelShader.cso</PackagePath>
+      <Modified>2017-01-12T20:57:58.045</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\LoadedVertexShader.cso">
+      <PackagePath>LoadedVertexShader.cso</PackagePath>
+      <Modified>2017-01-12T21:50:42.132</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2017-01-12T20:58:06.932</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\SamplePixelShader.cso">
+      <PackagePath>SamplePixelShader.cso</PackagePath>
+      <Modified>2017-01-12T20:57:58.236</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\SampleVertexShader.cso">
+      <PackagePath>SampleVertexShader.cso</PackagePath>
+      <Modified>2017-01-12T20:57:58.305</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\SkyBoxPixelShader.cso">
+      <PackagePath>SkyBoxPixelShader.cso</PackagePath>
+      <Modified>2017-01-12T21:42:27.509</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\SkyBoxVertexShader.cso">
+      <PackagePath>SkyBoxVertexShader.cso</PackagePath>
+      <Modified>2017-01-12T21:50:42.199</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

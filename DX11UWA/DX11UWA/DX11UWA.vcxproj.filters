@@ -113,12 +113,18 @@
     <Image Include="Assets\AlienTree.dds">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\CastleSkybox.dds">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DX11UWA_TemporaryKey.pfx" />
+    <None Include="Assets\Alientree.obj">
+      <Filter>Assets</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\SamplePixelShader.hlsl">
@@ -136,12 +142,15 @@
     <FxCompile Include="Content\LoadedPixelShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
+    <FxCompile Include="SkyBoxPixelShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="SkyBoxVertexShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="Assets\test pyramid.obj">
-      <Filter>Assets</Filter>
-    </Object>
-    <Object Include="Assets\Alientree.obj">
+    <Object Include="Assets\SkyboxCube.obj">
       <Filter>Assets</Filter>
     </Object>
   </ItemGroup>

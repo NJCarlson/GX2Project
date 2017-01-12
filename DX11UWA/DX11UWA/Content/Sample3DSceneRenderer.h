@@ -63,10 +63,20 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_loadedInputLayout;
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	loadedvertexShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_loadedpixelShader;
-		ModelViewProjectionConstantBuffer	m_loadedBufferData;
+		ModelViewProjectionConstantBuffer			m_loadedBufferData;
 
 		//Texture Variables
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> Alientree_srv;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> SkyBox_srv;
+
+		//SkyBox Variables
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		Skybox_vertexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		Skybox_indexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	Skybox_vertexShader;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader>	Skybox_pixelShader;
+		uint32	skyBox_indexCount;
+		ModelViewProjectionConstantBuffer			m_skyBoxBufferData;
+		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_skyBoxInputLayout;
 
 		// System resources for cube geometry.
 		ModelViewProjectionConstantBuffer	m_constantBufferData;

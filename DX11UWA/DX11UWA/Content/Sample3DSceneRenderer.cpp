@@ -76,11 +76,17 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 		Rotate(radians);
 	}
 
+	//The AlienTree
 	m_loadedBufferData.view = m_constantBufferData.view;
 	m_loadedBufferData.projection = m_constantBufferData.projection;
-
 	XMStoreFloat4x4(&m_loadedBufferData.model, XMMatrixTranspose(XMMatrixTranslation(-4, -2, 0)));
 
+	//Sky Box 
+	m_skyBoxBufferData.view = m_constantBufferData.view;
+	m_skyBoxBufferData.projection =  m_constantBufferData.projection;
+	XMStoreFloat4x4(&m_skyBoxBufferData.model, XMMatrixTranspose(XMMatrixTranslation(m_camera._41, m_camera._42,m_camera._43))); 
+	
+	//instancing
 	m_instanceconstbufdata.view = m_constantBufferData.view;
 	m_instanceconstbufdata.projection = m_constantBufferData.projection;
 	XMStoreFloat4x4(&m_instanceconstbufdata.model[0], XMMatrixTranspose(XMMatrixTranslation(2, 0, 0)));
@@ -227,17 +233,37 @@ void Sample3DSceneRenderer::Render(void)
 	auto context = m_deviceResources->GetD3DDeviceContext();
 
 	XMStoreFloat4x4(&m_constantBufferData.view, XMMatrixTranspose(XMMatrixInverse(nullptr, XMLoadFloat4x4(&m_camera))));
+	
 
-	// Prepare the constant buffer to send it to the graphics device.
-	context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_constantBufferData, 0, 0, 0);
-	context->UpdateSubresource1(instanceConstBuffer.Get(), 0, NULL, &m_instanceconstbufdata, 0, 0, 0);
 
 	// Each vertex is one instance of the VertexPositionColor struct.
 	UINT stride = sizeof(VertexPositionColor);
 	UINT loadStride = sizeof(VERTEX);
 	UINT offset = 0;
 
+	
+	//////////////////////////////////////////////////////////////
+	//SkyBox from an OBJfile
+	context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_skyBoxBufferData, 0, 0, 0);
+	context->IASetVertexBuffers(0, 1, Skybox_vertexBuffer.GetAddressOf(), &loadStride, &offset);
+	// Each index is one 16-bit unsigned integer (short).
+	context->IASetIndexBuffer(Skybox_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	context->IASetInputLayout(m_skyBoxInputLayout.Get());
+	// Attach our vertex shader.
+	context->VSSetShader(Skybox_vertexShader.Get(), nullptr, 0);
+	// Send the constant buffer to the graphics device.
+	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+	// Attach our pixel shader.
+	context->PSSetShader(Skybox_pixelShader.Get(), nullptr, 0);
+	context->PSSetShaderResources(0, 1, SkyBox_srv.GetAddressOf());
+	// Draw the objects.
+	context->DrawIndexed(skyBox_indexCount, 0, 0);
+	//clear the Z-buffer
+	context->ClearDepthStencilView(m_deviceResources->GetDepthStencilView(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
 	//CUBE
+	context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_constantBufferData, 0, 0, 0);
 	context->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &stride, &offset);
 	// Each index is one 16-bit unsigned integer (short).
 	context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
@@ -252,8 +278,12 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(m_indexCount, 0, 0);
 
+
+	
+
 	////////////////////////////////////////////////////////
 	//render the pyramid
+	context->UpdateSubresource1(instanceConstBuffer.Get(), 0, NULL, &m_instanceconstbufdata, 0, 0, 0);
 	context->IASetVertexBuffers(0, 1, p_vertexBuffer.GetAddressOf(), &stride, &offset);
 	// Each index is one 16-bit unsigned integer (short).
 	context->IASetIndexBuffer(p_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
@@ -286,7 +316,7 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(load_indexCount, 0, 0);
 
-
+	
 
 }
 
@@ -300,6 +330,9 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 
 	auto loadModelVStask = DX::ReadDataAsync(L"LoadedVertexShader.cso");
 	auto loadedModelPStask = DX::ReadDataAsync(L"LoadedPixelShader.cso");
+
+	auto skyBoxVStask = DX::ReadDataAsync(L"SkyBoxVertexShader.cso");
+	auto skyBoxPStask = DX::ReadDataAsync(L"SkyBoxPixelShader.cso");
 
 	// After the vertex shader file is loaded, create the shader and input layout.
 	auto createVSTask = loadVSTask.then([this](const std::vector<byte>& fileData)
@@ -329,6 +362,19 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateInputLayout(vertexDesc, ARRAYSIZE(vertexDesc), &fileData[0], fileData.size(), &m_loadedInputLayout));
 	});
 
+	auto createSkyBoxVSTask = skyBoxVStask.then([this](const std::vector<byte>& fileData)
+	{
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateVertexShader(&fileData[0], fileData.size(), nullptr, &Skybox_vertexShader));
+
+		static const D3D11_INPUT_ELEMENT_DESC vertexDesc[] =
+		{
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "UV", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		};
+
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateInputLayout(vertexDesc, ARRAYSIZE(vertexDesc), &fileData[0], fileData.size(), &m_skyBoxInputLayout));
+	});
 
 	auto creatInstanceVSTask = loadInstanceVStask.then([this](const std::vector<byte>& fileData)
 	{
@@ -353,6 +399,10 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreatePixelShader(&fileData[0], fileData.size(), nullptr, &m_loadedpixelShader));
 	});
 
+	auto createSkyBoxPSTask = skyBoxPStask.then([this](const std::vector<byte>& fileData)
+	{
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreatePixelShader(&fileData[0], fileData.size(), nullptr, &Skybox_pixelShader));
+	});
 
 #pragma region Cube
 	// Once both shaders are loaded, create the mesh.
@@ -467,9 +517,9 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 
 #pragma endregion
 
-#pragma region ModelLoaderTest
+#pragma region AlienTree
 
-	auto createModelLoaderTestTask = (createPSTask && createVSTask).then([this]()
+	auto createAlienTreeTask = (createPSTask && createVSTask).then([this]()
 	{
 		vector<VERTEX> testModelVerts;
 		vector<unsigned int> testModelIndices;
@@ -481,7 +531,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		vertexBufferData.pSysMem = testModelVerts.data(); 
 		vertexBufferData.SysMemPitch = 0;
 		vertexBufferData.SysMemSlicePitch = 0;
-		CD3D11_BUFFER_DESC vertexBufferDesc(sizeof(VERTEX)*testModelVerts.size(), D3D11_BIND_VERTEX_BUFFER);
+		CD3D11_BUFFER_DESC vertexBufferDesc(unsigned int (sizeof(VERTEX)*testModelVerts.size()), D3D11_BIND_VERTEX_BUFFER);
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexBufferData, &load_vertexBuffer));
 
 		load_indexCount = unsigned int( testModelIndices.size());
@@ -490,19 +540,55 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 		indexBufferData.pSysMem = testModelIndices.data();
 		indexBufferData.SysMemPitch = 0;
 		indexBufferData.SysMemSlicePitch = 0;
-		CD3D11_BUFFER_DESC indexBufferDesc(sizeof(unsigned int) * testModelIndices.size(), D3D11_BIND_INDEX_BUFFER);
+		CD3D11_BUFFER_DESC indexBufferDesc(unsigned int (sizeof(unsigned int) * testModelIndices.size()), D3D11_BIND_INDEX_BUFFER);
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &load_indexBuffer));
 	});
 
 	CreateDDSTextureFromFile(m_deviceResources->GetD3DDevice(), L"Assets/AlienTree.dds", nullptr, &Alientree_srv);
 
-	createPyramidTask.then([this]()
+	createAlienTreeTask.then([this]()
 	{
 		m_loadingComplete = true;
 	});
 
-#pragma
+#pragma endregion
 
+#pragma region Skybox
+
+	auto createSkyBoxTask = (createPSTask && createVSTask).then([this]()
+	{
+		vector<VERTEX> SkyBoxVerts;
+		vector<unsigned int> SkyBoxIndices;
+		ModelLoader mloader;
+
+		mloader.loadModel("Assets/SkyboxCube.obj", SkyBoxVerts, SkyBoxIndices);
+
+		D3D11_SUBRESOURCE_DATA vertexBufferData;
+		vertexBufferData.pSysMem = SkyBoxVerts.data();
+		vertexBufferData.SysMemPitch = 0;
+		vertexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC vertexBufferDesc(unsigned int (sizeof(VERTEX)*SkyBoxVerts.size()), D3D11_BIND_VERTEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexBufferData, &Skybox_vertexBuffer));
+
+		skyBox_indexCount = unsigned int(SkyBoxIndices.size());
+
+		D3D11_SUBRESOURCE_DATA indexBufferData = { 0 };
+		indexBufferData.pSysMem = SkyBoxIndices.data();
+		indexBufferData.SysMemPitch = 0;
+		indexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC indexBufferDesc(unsigned int (sizeof(unsigned int) * SkyBoxIndices.size()), D3D11_BIND_INDEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &Skybox_indexBuffer));
+	});
+
+	CreateDDSTextureFromFile(m_deviceResources->GetD3DDevice(), L"Assets/CastleSkybox.dds", nullptr, &SkyBox_srv);
+
+	createSkyBoxTask.then([this]()
+	{
+		m_loadingComplete = true;
+	});
+
+
+#pragma endregion
 }
 
 void Sample3DSceneRenderer::ReleaseDeviceDependentResources(void)
@@ -519,4 +605,6 @@ void Sample3DSceneRenderer::ReleaseDeviceDependentResources(void)
 	instanceConstBuffer.Reset();
 	load_vertexBuffer.Reset();
 	load_indexBuffer.Reset();
+	Skybox_vertexBuffer.Reset();
+	Skybox_indexBuffer.Reset();
 }
