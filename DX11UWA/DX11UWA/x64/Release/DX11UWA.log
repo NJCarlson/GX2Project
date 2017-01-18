@@ -1,8 +1,11 @@
-﻿  Sample3DSceneRenderer.cpp
+﻿  App.cpp
+  ModelLoader.cpp
+  Sample3DSceneRenderer.cpp
+  DX11UWAMain.cpp
   Generating code
-  24 of 5078 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    16 functions had inline decision re-evaluated but remain unchanged
+  150 of 5078 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
+    58 functions were new in current compilation
+    25 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   DX11UWA.vcxproj -> D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\DX11UWA.exe
   DX11UWA.vcxproj -> D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\DX11UWA.pdb (Full PDB)

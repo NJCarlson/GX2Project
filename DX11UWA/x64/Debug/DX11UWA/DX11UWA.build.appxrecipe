@@ -30,6 +30,9 @@
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\CastleSkybox.dds">
       <PackagePath>Assets\CastleSkybox.dds</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\grass_seamless.dds">
+      <PackagePath>Assets\grass_seamless.dds</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
@@ -63,8 +66,14 @@
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\SkyboxCube.obj">
       <PackagePath>Assets\SkyboxCube.obj</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\DX11UWA\Assets\FloorPlane.obj">
+      <PackagePath>Assets\FloorPlane.obj</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\InstancedVertexShader.cso">
       <PackagePath>InstancedVertexShader.cso</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LightPixelShader.cso">
+      <PackagePath>LightPixelShader.cso</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Debug\DX11UWA\LoadedPixelShader.cso">
       <PackagePath>LoadedPixelShader.cso</PackagePath>

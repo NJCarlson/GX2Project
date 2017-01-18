@@ -93,6 +93,36 @@ void Sample3DSceneRenderer::Update(DX::StepTimer const& timer)
 	XMStoreFloat4x4(&m_instanceconstbufdata.model[1], XMMatrixTranspose(XMMatrixTranslation(4, 0, 0)));
 	XMStoreFloat4x4(&m_instanceconstbufdata.model[2], XMMatrixTranspose(XMMatrixTranslation(6, 0, 0)));
 
+	//floor lights
+	XMStoreFloat4(&m_LightProperties.EyePosition, XMVectorSet(m_camera._41, m_camera._42, m_camera._43,1.0f));
+
+	float x = 2.0f;
+	float z = 5.0f;
+	for (int i = 0; i < numLights; ++i)
+	{
+		Light light;
+		XMFLOAT4 LightPosition;
+		memset(&light, 0, sizeof(Light));
+		light.Enabled = LightEnabled[i];
+		light.LightType = i;
+		light.Color = XMFLOAT4(LightColors[i]);
+		light.SpotAngle = XMConvertToRadians(45.0f);
+		light.ConstantAttenuation = 1.0f;
+		light.LinearAttenuation = 0.08f;
+		light.QuadraticAttenuation = 0.0f;
+		light.radius = 5.0f;
+		LightPosition = { 2.0, 1.0f, 5.0f,1 };
+		light.Position = LightPosition;
+		XMVECTOR LightDirection = XMVectorSet(-LightPosition.x, -LightPosition.y, -LightPosition.z, 0.0f);
+		LightDirection = XMVector3Normalize(LightDirection);
+		XMStoreFloat4(&light.Direction, LightDirection);
+
+		m_LightProperties.Lights[i] = light;
+	}
+
+	//m_d3dDeviceContext->UpdateSubresource(m_d3dLightPropertiesConstantBuffer.Get(), 0, nullptr, &m_LightProperties, 0, 0);
+	m_deviceResources->GetD3DDeviceContext()->UpdateSubresource(lightbuffer.Get(), 0, NULL, &m_LightProperties, 0, 0);
+
 
 	// Update or move camera here
 	UpdateCamera(timer, 1.0f, 0.75f);
@@ -278,7 +308,6 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(m_indexCount, 0, 0);
 
-
 	
 
 	////////////////////////////////////////////////////////
@@ -316,7 +345,29 @@ void Sample3DSceneRenderer::Render(void)
 	// Draw the objects.
 	context->DrawIndexed(load_indexCount, 0, 0);
 
+
+
+	//Floor
+	context->UpdateSubresource1(m_constantBuffer.Get(), 0, NULL, &m_loadedBufferData, 0, 0, 0);
+	context->IASetVertexBuffers(0, 1, floor_vertexBuffer.GetAddressOf(), &loadStride, &offset);
+	// Each index is one 16-bit unsigned integer (short).
+	context->IASetIndexBuffer(floor_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	context->IASetInputLayout(m_loadedInputLayout.Get());
+	// Attach our vertex shader.
+	context->VSSetShader(loadedvertexShader.Get(), nullptr, 0);
+	// Send the constant buffer to the graphics device.
+	context->VSSetConstantBuffers1(0, 1, m_constantBuffer.GetAddressOf(), nullptr, nullptr);
+	// Attach our pixel shader.
+	context->PSSetShader(light_pixelShader.Get(), nullptr, 0);
+	context->PSSetShaderResources(0, 1, grass_srv.GetAddressOf());
+	//lighting 
+	context->PSSetConstantBuffers(0, 1, lightbuffer.GetAddressOf());
+	// Draw the objects.
+	context->DrawIndexed(floor_indexCount, 0, 0);
+
 	
+
 
 }
 
@@ -330,6 +381,9 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 
 	auto loadModelVStask = DX::ReadDataAsync(L"LoadedVertexShader.cso");
 	auto loadedModelPStask = DX::ReadDataAsync(L"LoadedPixelShader.cso");
+
+	auto lightPStask = DX::ReadDataAsync(L"LightPixelShader.cso");
+
 
 	auto skyBoxVStask = DX::ReadDataAsync(L"SkyBoxVertexShader.cso");
 	auto skyBoxPStask = DX::ReadDataAsync(L"SkyBoxPixelShader.cso");
@@ -398,6 +452,16 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 	{
 		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreatePixelShader(&fileData[0], fileData.size(), nullptr, &m_loadedpixelShader));
 	});
+
+	//light_pixelShader
+	auto createlightPSTask = lightPStask.then([this](const std::vector<byte>& fileData)
+	{
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreatePixelShader(&fileData[0], fileData.size(), nullptr, &light_pixelShader));
+		CD3D11_BUFFER_DESC constantBufferDesc(sizeof(LightProperties), D3D11_BIND_CONSTANT_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&constantBufferDesc, nullptr, &lightbuffer));
+	});
+
+	
 
 	auto createSkyBoxPSTask = skyBoxPStask.then([this](const std::vector<byte>& fileData)
 	{
@@ -589,6 +653,44 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources(void)
 
 
 #pragma endregion
+
+#pragma region Floor
+	auto createFloorTask = (createPSTask && createVSTask).then([this]()
+	{
+		vector<VERTEX> testModelVerts;
+		vector<unsigned int> testModelIndices;
+		ModelLoader mloader;
+
+		mloader.loadModel("Assets/FloorPlane.obj", testModelVerts, testModelIndices);
+
+		D3D11_SUBRESOURCE_DATA vertexBufferData;
+		vertexBufferData.pSysMem = testModelVerts.data();
+		vertexBufferData.SysMemPitch = 0;
+		vertexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC vertexBufferDesc(unsigned int(sizeof(VERTEX)*testModelVerts.size()), D3D11_BIND_VERTEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexBufferData, &floor_vertexBuffer));
+
+		floor_indexCount = unsigned int(testModelIndices.size());
+
+		D3D11_SUBRESOURCE_DATA indexBufferData = { 0 };
+		indexBufferData.pSysMem = testModelIndices.data();
+		indexBufferData.SysMemPitch = 0;
+		indexBufferData.SysMemSlicePitch = 0;
+		CD3D11_BUFFER_DESC indexBufferDesc(unsigned int(sizeof(unsigned int) * testModelIndices.size()), D3D11_BIND_INDEX_BUFFER);
+		DX::ThrowIfFailed(m_deviceResources->GetD3DDevice()->CreateBuffer(&indexBufferDesc, &indexBufferData, &floor_indexBuffer));
+	});
+
+	CreateDDSTextureFromFile(m_deviceResources->GetD3DDevice(), L"Assets/grass_seamless.dds", nullptr, &grass_srv);
+
+	// Once the cube is loaded, the object is ready to be rendered.
+	createFloorTask.then([this]()
+	{
+		m_loadingComplete = true;
+	});
+
+
+#pragma endregion
+
 }
 
 void Sample3DSceneRenderer::ReleaseDeviceDependentResources(void)
@@ -607,4 +709,7 @@ void Sample3DSceneRenderer::ReleaseDeviceDependentResources(void)
 	load_indexBuffer.Reset();
 	Skybox_vertexBuffer.Reset();
 	Skybox_indexBuffer.Reset();
+	floor_indexBuffer.Reset();
+	floor_vertexBuffer.Reset();
+
 }

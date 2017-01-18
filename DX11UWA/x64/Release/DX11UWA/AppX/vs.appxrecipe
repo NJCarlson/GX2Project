@@ -22,7 +22,7 @@
     <AppXManifest Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-01-12T20:58:06.973</Modified>
+      <Modified>2017-01-17T19:16:36.359</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -78,7 +78,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\DX11UWA.exe">
       <PackagePath>DX11UWA.exe</PackagePath>
-      <Modified>2017-01-12T22:05:20.251</Modified>
+      <Modified>2017-01-17T19:16:36.003</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\DX11UWA.winmd">
       <PackagePath>DX11UWA.winmd</PackagePath>
@@ -98,7 +98,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-01-12T20:58:06.932</Modified>
+      <Modified>2017-01-17T19:16:36.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Fullsail\Current\Graphics II\GX2Project\DX11UWA\x64\Release\DX11UWA\ilc\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>

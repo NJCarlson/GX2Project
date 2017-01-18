@@ -4,7 +4,10 @@
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
 #include "Common\DDSTextureLoader.h"
+#include <DirectXColors.h>
+#include <DirectXMath.h>
 
+using namespace DirectX;
 
 namespace DX11UWA
 {
@@ -47,6 +50,66 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	m_vertexShader;
 		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pixelShader;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_constantBuffer;
+		// System resources for cube geometry.
+		ModelViewProjectionConstantBuffer	m_constantBufferData;
+		ModelViewProjectionConstantBufferInstanced m_instanceconstbufdata;
+		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
+		uint32	m_indexCount;
+
+
+
+		//Floor resources
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		floor_vertexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		floor_indexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> grass_srv;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader> light_pixelShader;
+
+		uint32	floor_indexCount;
+		ModelViewProjectionConstantBuffer floor_BufData;
+
+		//lighting
+		struct Light
+		{
+			XMFLOAT4      Position;
+			XMFLOAT4      Direction;
+			float		radius;
+			XMFLOAT3	rad_padding;
+			XMFLOAT4      Color;
+			float       SpotAngle;
+			float       ConstantAttenuation;
+			float       LinearAttenuation;
+			float       QuadraticAttenuation;
+			int         LightType;
+			XMFLOAT3	type_padding;
+			bool        Enabled;
+			XMFLOAT3      coneRatio; // x = inner ratio,  y = outerratio,  z = angle
+			//XMINT2		padding;
+
+		};
+
+		struct LightProperties 
+		{
+			XMFLOAT4 EyePosition;
+			XMFLOAT4 GlobalAmbient;
+			Light  Lights[3];
+		};
+		LightProperties m_LightProperties;
+
+		XMVECTORF32 LightColors[3] = 
+		{
+			 Colors::DarkOliveGreen, Colors::Yellow, Colors::Indigo
+		};
+
+		 bool LightEnabled[3] = 
+		{
+			true, true, true
+		};
+
+		 int numLights = 3;
+		 float radius = 8.0f;
+		 float offset = 2.0f * XM_PI / numLights;
+		 Microsoft::WRL::ComPtr<ID3D11Buffer> lightbuffer;
+
 
 		//Pyramid  resources
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		p_vertexBuffer;
@@ -78,11 +141,7 @@ namespace DX11UWA
 		ModelViewProjectionConstantBuffer			m_skyBoxBufferData;
 		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_skyBoxInputLayout;
 
-		// System resources for cube geometry.
-		ModelViewProjectionConstantBuffer	m_constantBufferData;
-		ModelViewProjectionConstantBufferInstanced m_instanceconstbufdata;
-		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
-		uint32	m_indexCount;
+		
 
 		// Variables used with the rendering loop.
 		bool	m_loadingComplete;

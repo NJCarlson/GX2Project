@@ -116,6 +116,9 @@
     <Image Include="Assets\CastleSkybox.dds">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\grass_seamless.dds">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -125,6 +128,8 @@
     <None Include="Assets\Alientree.obj">
       <Filter>Assets</Filter>
     </None>
+    <None Include="Assets\SkyboxCube.obj" />
+    <None Include="Assets\FloorPlane.obj" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\SamplePixelShader.hlsl">
@@ -142,16 +147,14 @@
     <FxCompile Include="Content\LoadedPixelShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="SkyBoxPixelShader.hlsl">
+    <FxCompile Include="Content\SkyBoxVertexShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="SkyBoxVertexShader.hlsl">
+    <FxCompile Include="Content\LightPixelShader.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Assets\SkyboxCube.obj">
-      <Filter>Assets</Filter>
-    </Object>
+    <FxCompile Include="Content\SkyBoxPixelShader.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

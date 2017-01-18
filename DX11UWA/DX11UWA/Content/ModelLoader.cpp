@@ -1,10 +1,12 @@
 #include "pch.h"
+#include <windows.h>
 #include "ModelLoader.h"
 
 bool ModelLoader::loadModel(const char * path, vector<VERTEX> &out_verts, vector<unsigned int> &out_indices)
 {
 	FILE * file;
 	fopen_s(&file, path, "r");
+
 	if (file == NULL)
 	{
 		printf("Failed to open the file !\n");
