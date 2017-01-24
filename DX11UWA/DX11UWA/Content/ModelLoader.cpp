@@ -78,3 +78,4 @@ bool ModelLoader::loadModel(const char * path, vector<VERTEX> &out_verts, vector
 
 		return true;
 }
+

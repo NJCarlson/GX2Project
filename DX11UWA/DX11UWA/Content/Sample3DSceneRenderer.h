@@ -9,14 +9,33 @@
 
 using namespace DirectX;
 
+
+
+
 namespace DX11UWA
 {
 	// This sample renderer instantiates a basic rendering pipeline.
+
+	struct MODEL
+	{
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		constantBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		vertexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		indexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> srv;
+		uint32 indexCount;
+		ModelViewProjectionConstantBuffer loadedbufdata;
+
+		Microsoft::WRL::ComPtr<ID3D11VertexShader> vs_shader;
+		Microsoft::WRL::ComPtr<ID3D11PixelShader> ps_shader;
+		Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayout;
+		Microsoft::WRL::ComPtr<ID3D11CommandList> commandList;
+		bool threadComplete;
+	};
+
 	class Sample3DSceneRenderer
 	{
 	public:
-	
-		
+		void setContextDraw(MODEL * model,ModelViewProjectionConstantBuffer * data);
 
 		Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources);
 		void CreateDeviceDependentResources(void);
@@ -40,6 +59,11 @@ namespace DX11UWA
 		void UpdateCamera(DX::StepTimer const& timer, float const moveSpd, float const rotSpd);
 
 	private:
+
+		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv;
+		Microsoft::WRL::ComPtr<ID3D11SamplerState> sampState;
+		Microsoft::WRL::ComPtr<ID3D11DeviceContext> defCon;
+
 		// Cached pointer to device resources.
 		std::shared_ptr<DX::DeviceResources> m_deviceResources;
 
@@ -56,8 +80,6 @@ namespace DX11UWA
 		Microsoft::WRL::ComPtr<ID3D11VertexShader>	instancedvertexShader;
 		uint32	m_indexCount;
 
-
-
 		//Floor resources
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		floor_vertexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		floor_indexBuffer;
@@ -70,21 +92,25 @@ namespace DX11UWA
 		//lighting
 		struct Light
 		{
-			XMFLOAT4      Position;
-			XMFLOAT4      Direction;
-			float		radius;
-			XMFLOAT3	rad_padding;
-			XMFLOAT4      Color;
-			float       SpotAngle;
-			float       ConstantAttenuation;
-			float       LinearAttenuation;
-			float       QuadraticAttenuation;
-			int         LightType;
-			XMFLOAT3	type_padding;
-			bool        Enabled;
-			XMFLOAT3      coneRatio; // x = inner ratio,  y = outerratio,  z = angle
-			//XMINT2		padding;
+			XMFLOAT4    Position;    //16
+			XMFLOAT4    Direction;   //16
+			XMFLOAT4    radius;    
+			XMFLOAT4    Color; //16
 
+			XMFLOAT4    AttenuationData; 
+		// x =  SpotAngle;
+		// y =  ConstantAttenuation;
+		// z =  LinearAttenuation;
+		// w =  QuadraticAttenuation; 
+
+			XMFLOAT4 LightTypeEnabled;
+			// x  = type
+			// y = Enabled;
+			
+			XMFLOAT4   ConeRatio; // x = inner ratio,  y = outerratio
+		
+			XMFLOAT4    coneAngle;
+			
 		};
 
 		struct LightProperties 
@@ -97,7 +123,8 @@ namespace DX11UWA
 
 		XMVECTORF32 LightColors[3] = 
 		{
-			 Colors::DarkOliveGreen, Colors::Yellow, Colors::Indigo
+			// Directional light;      Point Light;    Spot Light;
+			 Colors::DarkOliveGreen, Colors::Yellow, Colors::DarkOrange
 		};
 
 		 bool LightEnabled[3] = 
@@ -105,9 +132,23 @@ namespace DX11UWA
 			true, true, true
 		};
 
+		 //Dynamic Variables
+		 bool dirLightSwitch = false; // false = negative direction true = positive direction
+		 bool pointLightSwitch = false; // false = negative direction true = positive direction
+		 float spotRad = 10.0f;
+		 float innerConeRat = .8f;
+		 float outterConeRat = .45f;
+		 XMFLOAT4 coneAng = { 0,-1.0f, -1.0f, 0 };
+
+		 XMFLOAT4 pointLightPos = { 2.0f,1.0f, 5.0f,1 };
+		 XMFLOAT4 directionalLightPos = { 2.0f,1.0f, 5.0f,1 };
+		 XMFLOAT4 spotPos = { 0.0, 2.0f, 0.0f,1 };
+
 		 int numLights = 3;
 		 float radius = 8.0f;
 		 float offset = 2.0f * XM_PI / numLights;
+
+
 		 Microsoft::WRL::ComPtr<ID3D11Buffer> lightbuffer;
 
 
@@ -141,7 +182,13 @@ namespace DX11UWA
 		ModelViewProjectionConstantBuffer			m_skyBoxBufferData;
 		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_skyBoxInputLayout;
 
-		
+		// Water tower variables 
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		waterTower_vertexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11Buffer>		waterTower_indexBuffer;
+		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> waterTower_srv;
+		uint32 waterTower_indexCount;
+		ModelViewProjectionConstantBuffer			waterTower_loadedBufferData;
+		MODEL waterTower;
 
 		// Variables used with the rendering loop.
 		bool	m_loadingComplete;

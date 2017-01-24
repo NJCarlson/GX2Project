@@ -113,10 +113,13 @@
     <Image Include="Assets\AlienTree.dds">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\CastleSkybox.dds">
+    <Image Include="Assets\grass_seamless.dds">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\grass_seamless.dds">
+    <Image Include="Assets\watertower_diffuse.dds">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\OutputCube.dds">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -130,6 +133,7 @@
     </None>
     <None Include="Assets\SkyboxCube.obj" />
     <None Include="Assets\FloorPlane.obj" />
+    <None Include="Assets\WaterTower.obj" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Content\SamplePixelShader.hlsl">
