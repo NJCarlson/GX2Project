@@ -1,3 +1,5 @@
+Old Class project for Full Sail Computer Graphics 2 class. Basic example app of rendering custom graphics.
+
 SPOTLIGHT CONTROLS : 
 The 'L' Key snaps the spotlight position back to its original place.
 
